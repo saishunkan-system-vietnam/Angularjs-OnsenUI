@@ -1,0 +1,1 @@
+Project for learning AngularJS 1 and Onsen UI
