@@ -8,6 +8,7 @@
 ## How to run app
 1. git clone https://github.com/saishunkan-system-vietnam/Angularjs-OnsenUI.git
 2. Download Monaca Localkit https://monaca.io/localkit.html
-3. Import your project after you clone into Monaca Localkit
-4. Run project in Monaca Localkit
+3. Instal Monaca Localkit
+4. Import your project after you clone into Monaca Localkit
+5. Run project in Monaca Localkit
 
