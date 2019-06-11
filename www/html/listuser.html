@@ -1,0 +1,47 @@
+<ons-page>
+    <ons-list>
+        <ons-list-item>
+                <div className="table-responsive table-data">
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <td>Avatar</td>
+                                <td>user name</td>
+                                <td>full name</td>
+                                <td>position</td>
+                                <td>level</td>
+                                <td>created user</td>
+                                <td>status</td>
+                                <td>action</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                    <tr key={value.id}>
+                                        <td>
+                                            {imgUser(baseUrl, value.img)}
+                                        </td>
+                                        <td>{value.user_name}</td>
+                                        <td>
+                                            {value.full_name}
+                                        </td>
+                                        <td>{value.position}</td>
+                                        <td>
+                                            {getPosition(value['level'])}
+                                        </td>
+                                        <td>
+                                            {value.created_user}
+                                        </td>
+                                        <td>
+                                            {getStatus(value.status)}
+                                        </td>
+                                        <td>
+                                            {getAction(value.status, value.id)}
+                                            {getRestock(value.status, value.id)}
+                                        </td>
+                                    </tr>
+                            </tbody>
+                            </table>
+                        </div>
+        </ons-list-item>
+    </ons-list>
+</ons-page>
