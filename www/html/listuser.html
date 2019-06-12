@@ -1,47 +1,48 @@
-<ons-page>
-    <ons-list>
-        <ons-list-item>
-                <div className="table-responsive table-data">
-                        <table className="table">
-                            <thead>
-                            <tr>
-                                <td>Avatar</td>
-                                <td>user name</td>
-                                <td>full name</td>
-                                <td>position</td>
-                                <td>level</td>
-                                <td>created user</td>
-                                <td>status</td>
-                                <td>action</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                    <tr key={value.id}>
-                                        <td>
-                                            {imgUser(baseUrl, value.img)}
-                                        </td>
-                                        <td>{value.user_name}</td>
-                                        <td>
-                                            {value.full_name}
-                                        </td>
-                                        <td>{value.position}</td>
-                                        <td>
-                                            {getPosition(value['level'])}
-                                        </td>
-                                        <td>
-                                            {value.created_user}
-                                        </td>
-                                        <td>
-                                            {getStatus(value.status)}
-                                        </td>
-                                        <td>
-                                            {getAction(value.status, value.id)}
-                                            {getRestock(value.status, value.id)}
-                                        </td>
-                                    </tr>
-                            </tbody>
-                            </table>
-                        </div>
-        </ons-list-item>
-    </ons-list>
+<ons-page ng-controller="UserController">
+<div ng-if="label !== ''">
+    <div className="table-responsive table-data">
+        <table className="table">
+            <thead>
+            <tr>
+                <td>Avatar</td>
+                <td>UserName</td>
+                <td>Position</td>
+                <td>Status</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td>
+                    <div ng-if="user.img !== '' && user.img !== null">
+                        <img class="u-avatar" ng-src='{{imgAvatar+user.img}}' class="img-responsive "/>
+                    </div>
+                    <div ng-if="user.img === '' || user.img === null">
+                        <img class="u-avatar" ng-src='{{noImg}}' class="img-responsive "/>
+                    </div>
+                </td>
+                <td>{{user.user_name}}</td>
+                <td>{{user.position}}</td>
+                <td>
+                    <div ng-if="user.status == 0">
+                        <span class="status--process">Ready</span>
+                    </div>
+                    <div ng-if="user.status == 1">
+                        <span class="status--denied">Denied</span>
+                    </div>
+                </td>
+                <td>
+                    <!--<ons-list-item style="color: #20c997;" ng-click="confirm()" modifier="tappable">-->
+                    <!--<i class="fa fa-undo fa-lg"></i>-->
+                    <!--</ons-list-item>-->
+                    <!--<span style="color: #20c997; cursor: pointer" tappable ng-click="restock()"><i class="fa fa-undo fa-lg"></i></span>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div ng-if="label === ''">
+    <span>{{label}}</span>
+</div>
 </ons-page>

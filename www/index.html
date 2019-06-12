@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="rootApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -8,8 +8,8 @@
   <script src="./lib/angular/angular.min.js"></script>
   <script src="./lib/onsenui/js/onsenui.min.js"></script>
   <script src="./lib/onsenui/js/angular-onsenui.min.js"></script>
-  <script src="./js/getlistuser.js"></script>
-  <script src="https://use.fontawesome.com/b4520f3354.js"></script>
+
+  <!--<script src="https://use.fontawesome.com/b4520f3354.js"></script>-->
 
   <link rel="stylesheet" href="./components/loader.css">
   <link rel="stylesheet" href="./lib/onsenui/css/onsenui.css">
@@ -32,6 +32,7 @@
   <link href="./assets/vendor/slick/slick.css" rel="stylesheet" media="all">
   <link href="./assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
   <link href="./assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!--<script src="./js/getlistuser.js"></script>-->
 
   <script>
     // ons.bootstrap()
@@ -46,61 +47,110 @@
     //   document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
     //   document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
     // }
+
+    ons.bootstrap()
+        .controller('UserController', function($scope, $http) {
+            this.load = function(page) {
+                mySplitter.content.load(page)
+                    .then(function() {
+                        mySplitter.left.close();
+                    });
+            };
+            $scope.toolbarTitle = 'List Users';
+
+            return $http({
+                url: 'http://localhost/api/v1/user',
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imh1bmdodDExODhAZ21haWwuY29tIiwibmFtZSI6Ikh1bmdIVCJ9.Tnmx_FNfQYUOX-QVUux9paDJ3di55tBnGME7vI2vtA0',
+                },
+            }).
+            then(function(response) {
+                var url = response.data.payload.baseUrl;
+                if(response.data.payload.lstUser.length === 0){
+                    $scope.label = 'No results were found!';
+                }
+                console.log(response.data.payload);
+                $scope.users = response.data.payload.lstUser;
+                $scope.imgAvatar = url + '/';
+                $scope.noImg = url.replace('/uploads/files/users', '/img/not-available.jpg');
+            }),
+                function(error) {
+                    $scope.error = ('Search error: ', error);
+                };
+        });
   </script>
 </head>
 <body>
 
-  <ons-page ng-app="ngApp" ng-controller="UserController"">
-    <ons-toolbar>
-      <div class="center">{{toolbarTitle}}</div>
-    </ons-toolbar>
-      <div ng-if="label !== ''">
-          <div className="table-responsive table-data">
-              <table className="table">
-                  <thead>
-                    <tr>
-                      <td>Avatar</td>
-                      <td>UserName</td>
-                      <td>Position</td>
-                      <td>Status</td>
-                      <td>Action</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <tr ng-repeat="user in users">
-                        <td>
-                            <div ng-if="user.img !== '' && user.img !== null">
-                                <img class="u-avatar" ng-src='{{imgAvatar+user.img}}' class="img-responsive " />
-                            </div>
-                            <div ng-if="user.img === '' || user.img === null">
-                                <img class="u-avatar" ng-src='{{noImg}}' class="img-responsive " />
-                            </div>
-                        </td>
-                        <td>{{user.user_name}}</td>
-                        <td>{{user.position}}</td>
-                        <td>
-                          <div ng-if="user.status == 0">
-                            <span class="status--process">Ready</span>
-                          </div>
-                          <div ng-if="user.status == 1">
-                              <span class="status--denied">Denied</span>
-                            </div>
-                        </td>
-                        <td>
-                          <!--<ons-list-item style="color: #20c997;" ng-click="confirm()" modifier="tappable">-->
-                            <!--<i class="fa fa-undo fa-lg"></i>-->
-                          <!--</ons-list-item>-->
-                          <!--<span style="color: #20c997; cursor: pointer" tappable ng-click="restock()"><i class="fa fa-undo fa-lg"></i></span>-->
-                        </td>
-                      </tr>
-                  </tbody>
-                </table>
+<ons-splitter var="mySplitter" ng-controller="UserController as splitter">
+    <ons-splitter-side side="left" width="220px" collapse swipeable>
+        <ons-page>
+            <ons-list>
+                <ons-list-item ng-click="splitter.load('homepage')" tappable>
+                    Home
+                </ons-list-item>
+                <ons-list-item ng-click="splitter.load('settings.html')" tappable>
+                    Settings
+                </ons-list-item>
+                <ons-list-item ng-click="splitter.load('about.html')" tappable>
+                    About
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content page="homepage"></ons-splitter-content>
+</ons-splitter>
+
+<template id="homepage">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
             </div>
-      </div>
-      <div ng-if="label === ''">
-          <span>{{label}}</span>
-      </div>
-  </ons-page>
+            <div class="center">
+                {{toolbarTitle}}
+            </div>
+        </ons-toolbar>
+        <p style="text-align: center; opacity: 1; padding-top: 20px;">
+            <ng-include src="'html/listuser.html'"></ng-include>
+        </p>
+    </ons-page>
+</template>
+
+<template id="settings.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                Settings
+            </div>
+        </ons-toolbar>
+    </ons-page>
+</template>
+
+<template id="about.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                About
+            </div>
+        </ons-toolbar>
+    </ons-page>
+</template>
 
 </body>
 </html>
