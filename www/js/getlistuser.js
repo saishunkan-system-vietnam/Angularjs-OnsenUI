@@ -1,7 +1,5 @@
-var myApp = angular.module("rootApp", []);
-
-myApp.controller("UserController", function ($scope, $http) {
-
+angular.module("rootApp")
+.controller("UserController", function ($scope, $http) {
     this.load = function (page) {
         mySplitter.content.load(page)
             .then(function () {
@@ -28,9 +26,9 @@ myApp.controller("UserController", function ($scope, $http) {
         $scope.imgAvatar = url + '/';
         $scope.noImg = url.replace('/uploads/files/users', '/img/not-available.jpg');
     }),
-    function (error) {
-        $scope.error = ('Search error: ', error);
-    };
+        function (error) {
+            $scope.error = ('Search error: ', error);
+        };
 });
 
 // myApp.controller("CtrlTwo", function () {

@@ -32,7 +32,9 @@
   <link href="./assets/vendor/slick/slick.css" rel="stylesheet" media="all">
   <link href="./assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
   <link href="./assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-    <!--<script src="./js/getlistuser.js"></script>-->
+    <script src="./js/app.js"></script>
+    <script src="./js/getlistuser.js"></script>
+    <script src="./js/brands/list.js"></script>
 
   <script>
     // ons.bootstrap()
@@ -49,54 +51,33 @@
     // }
 
     ons.bootstrap()
-        .controller('UserController', function($scope, $http) {
+        .controller('Menu', function() {
             this.load = function(page) {
                 mySplitter.content.load(page)
                     .then(function() {
                         mySplitter.left.close();
                     });
             };
-            $scope.toolbarTitle = 'List Users';
-
-            return $http({
-                url: 'http://localhost/api/v1/user',
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imh1bmdodDExODhAZ21haWwuY29tIiwibmFtZSI6Ikh1bmdIVCJ9.Tnmx_FNfQYUOX-QVUux9paDJ3di55tBnGME7vI2vtA0',
-                },
-            }).
-            then(function(response) {
-                var url = response.data.payload.baseUrl;
-                if(response.data.payload.lstUser.length === 0){
-                    $scope.label = 'No results were found!';
-                }
-                console.log(response.data.payload);
-                $scope.users = response.data.payload.lstUser;
-                $scope.imgAvatar = url + '/';
-                $scope.noImg = url.replace('/uploads/files/users', '/img/not-available.jpg');
-            }),
-                function(error) {
-                    $scope.error = ('Search error: ', error);
-                };
         });
   </script>
 </head>
 <body>
 
-<ons-splitter var="mySplitter" ng-controller="UserController as splitter">
+<ons-splitter var="mySplitter" ng-controller="Menu as splitter">
     <ons-splitter-side side="left" width="220px" collapse swipeable>
         <ons-page>
             <ons-list>
                 <ons-list-item ng-click="splitter.load('homepage')" tappable>
                     Home
                 </ons-list-item>
-                <ons-list-item ng-click="splitter.load('settings.html')" tappable>
-                    Settings
+                <ons-list-item ng-click="splitter.load('listuser.html')" tappable>
+                    List User
                 </ons-list-item>
-                <ons-list-item ng-click="splitter.load('about.html')" tappable>
-                    About
+                <ons-list-item ng-click="splitter.load('brands.html')" tappable>
+                    List Brands
+                </ons-list-item>
+                <ons-list-item ng-click="splitter.load('one.html')" tappable>
+                    List Devices
                 </ons-list-item>
             </ons-list>
         </ons-page>
@@ -113,16 +94,16 @@
                 </ons-toolbar-button>
             </div>
             <div class="center">
-                {{toolbarTitle}}
+                Home
             </div>
         </ons-toolbar>
-        <p style="text-align: center; opacity: 1; padding-top: 20px;">
-            <ng-include src="'html/listuser.html'"></ng-include>
+        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+            Swipe right to open the menu!
         </p>
     </ons-page>
 </template>
 
-<template id="settings.html">
+<template id="listuser.html">
     <ons-page>
         <ons-toolbar>
             <div class="left">
@@ -131,13 +112,22 @@
                 </ons-toolbar-button>
             </div>
             <div class="center">
-                Settings
+                {{toolbarTitle}}
             </div>
         </ons-toolbar>
+        <p style="text-align: center; opacity: 1; padding-top: 20px;">
+            <ng-include src="'html/users/listuser.html'"></ng-include>
+        </p>
     </ons-page>
 </template>
 
-<template id="about.html">
+<template id="brands.html">
+    <ons-page>
+        <ng-include src="'html/brands/list.html'"></ng-include>
+    </ons-page>
+</template>
+
+<template id="one.html">
     <ons-page>
         <ons-toolbar>
             <div class="left">
@@ -146,11 +136,11 @@
                 </ons-toolbar-button>
             </div>
             <div class="center">
-                About
+                One
             </div>
         </ons-toolbar>
+        <ng-include src="'html/users/one.html'"></ng-include>
     </ons-page>
 </template>
-
 </body>
 </html>

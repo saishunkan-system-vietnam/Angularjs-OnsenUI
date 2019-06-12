@@ -1,6 +1,5 @@
-<ons-page ng-controller="UserController">
 <div ng-if="label !== ''">
-    <div className="table-responsive table-data">
+    <div className="table-responsive table-data" ng-controller="UserController">
         <table className="table">
             <thead>
             <tr>
@@ -45,4 +44,3 @@
 <div ng-if="label === ''">
     <span>{{label}}</span>
 </div>
-</ons-page>

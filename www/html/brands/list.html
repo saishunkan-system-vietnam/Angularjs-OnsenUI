@@ -1,0 +1,21 @@
+<ons-toolbar>
+    <div class="left">
+        <ons-toolbar-button ng-click="mySplitter.left.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+    </div>
+    <div class="center">
+        List Brands
+    </div>
+</ons-toolbar>
+<p style="text-align: center; opacity: 1; padding-top: 40px;">
+<div class="well" ng-controller="BrandsController">
+    <div class="input-group">
+    <span class="input-group-btn">
+    <button class="btn btn-success" type="button"
+            ng-click="reverseData()">Reverse Text</button>
+</span>
+        <input class="form-control" ng-model="inputData">
+    </div>
+</div>
+</p>
