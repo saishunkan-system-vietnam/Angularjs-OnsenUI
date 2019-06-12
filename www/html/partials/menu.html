@@ -1,0 +1,21 @@
+<ons-splitter var="mySplitter" ng-controller="Menu as splitter">
+    <ons-splitter-side side="left" width="220px" collapse swipeable>
+        <ons-page>
+            <ons-list>
+                <ons-list-item ng-click="load('homepage')" tappable>
+                    Home
+                </ons-list-item>
+                <ons-list-item ng-click="load('listuser.html')" tappable>
+                    List User
+                </ons-list-item>
+                <ons-list-item ng-click="load('brands.html')" tappable>
+                    List Brands
+                </ons-list-item>
+                <ons-list-item ng-click="load('one.html')" tappable>
+                    List Devices
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content page="homepage"></ons-splitter-content>
+</ons-splitter>

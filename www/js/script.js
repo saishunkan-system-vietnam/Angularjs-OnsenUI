@@ -1,6 +1,4 @@
-angular.module('ngApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
-
-.controller('AppCtrl', function($scope, $mdDialog) {
+myApp.controller('alertCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', function($scope, $mdDialog) {
   $scope.status = '  ';
   $scope.customFullscreen = false;
 
@@ -110,7 +108,7 @@ angular.module('ngApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       $mdDialog.hide(answer);
     };
   }
-});
+}]);
 
 
 /**

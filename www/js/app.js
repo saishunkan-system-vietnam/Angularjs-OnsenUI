@@ -1,10 +1,9 @@
-var myApp = angular.module("rootApp", ['Menu']);
+var myApp = angular.module("rootApp", ['onsen']);
 
-myApp.controller("CtrlTwo", function ($scope) {
-
-    $scope.inputData = "angularjs";
-
-    $scope.changeUpperCase = function () {
-        $scope.inputData = $scope.inputData.toUpperCase();
-    };
+ons.ready(function() {
+    console.log("Onsen UI is ready!");
 });
+if (ons.platform.isIPhoneX()) {
+    document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+    document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+}
