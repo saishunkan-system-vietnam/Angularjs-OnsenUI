@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f08cf7ee-a33c-4db8-b894-c9f95f6e7ff6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/www/html/brands/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/html/users/edituser.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/html/users/one.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/html/users/two.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/js/brands/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/html/listuser.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/html/users/listuser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/js/getlistuser.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/getlistuser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/getlistuser.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/users/getlistuser.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +14,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/getlistuser.js">
+        <entry file="file://$PROJECT_DIR$/www/js/users/getlistuser.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="24" selection-start-column="24" selection-end-column="24" />
@@ -48,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
+            <state relative-caret-position="1825">
               <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="70" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#ons-page#0;n#template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -61,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/html/brands/list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -210,6 +202,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Company\Angular-OnsenUI\DemoA_O\www\js\users" />
       <recent name="C:\Company\Angular-OnsenUI\DemoA_O\www\html\users" />
       <recent name="C:\Company\Angular-OnsenUI\DemoA_O\www\js" />
     </key>
@@ -237,12 +230,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560218514101</updated>
       <workItem from="1560218515431" duration="19872000" />
-      <workItem from="1560300922274" duration="7544000" />
+      <workItem from="1560300922274" duration="7604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27416000" />
+    <option name="totallyTimeSpent" value="27476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -321,7 +314,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/getlistuser.js">
+    <entry file="file://$PROJECT_DIR$/www/js/users/getlistuser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="24" selection-start-column="24" selection-end-column="24" />
@@ -366,21 +359,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/brands/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
+        <state relative-caret-position="1825">
           <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="70" />
           <folding>
             <element signature="n#style#0;n#p#0;n#ons-page#0;n#template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#ons-page#0;n#template#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/html/brands/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
         </state>
       </provider>
     </entry>
