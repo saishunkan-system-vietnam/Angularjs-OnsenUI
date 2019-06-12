@@ -1,5 +1,4 @@
-var myApp = angular.module("rootApp", ['Menu']);
-
+var myApp = angular.module("rootApp", ['onsen']);
 myApp.controller("CtrlTwo", function ($scope) {
 
     $scope.inputData = "angularjs";

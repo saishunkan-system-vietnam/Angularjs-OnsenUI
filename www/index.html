@@ -1,42 +1,45 @@
 <!DOCTYPE HTML>
 <html ng-app="rootApp">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-  <script src="./components/loader.js"></script>
-  <script src="./lib/angular/angular.min.js"></script>
-  <script src="./lib/onsenui/js/onsenui.min.js"></script>
-  <script src="./lib/onsenui/js/angular-onsenui.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="./components/loader.js"></script>
+    <script src="./lib/angular/angular.min.js"></script>
+    <script src="./lib/onsenui/js/onsenui.min.js"></script>
+    <script src="./lib/onsenui/js/angular-onsenui.min.js"></script>
 
-  <!--<script src="https://use.fontawesome.com/b4520f3354.js"></script>-->
+    <!--<script src="https://use.fontawesome.com/b4520f3354.js"></script>-->
 
-  <link rel="stylesheet" href="./components/loader.css">
-  <link rel="stylesheet" href="./lib/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="./lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="./assets/style.css">
-  <!-- Fontfaces CSS-->
-  <link href="./assets/css/font-face.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="./components/loader.css">
+    <link rel="stylesheet" href="./lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="./lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <!-- Fontfaces CSS-->
+    <link href="./assets/css/font-face.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
-  <!-- Bootstrap CSS-->
-  <link href="./assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <!-- Bootstrap CSS-->
+    <link href="./assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
-  <!-- Vendor CSS-->
-  <link href="./assets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/wow/animate.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/slick/slick.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-  <link href="./assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- Vendor CSS-->
+    <link href="./assets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="./assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <script src="./js/app.js"></script>
     <script src="js/users/getlistuser.js"></script>
     <script src="./js/brands/list.js"></script>
+    <script src="./js/partials/menu.js"></script>
 
-  <script>
+    <script>
     // ons.bootstrap()
     //   .controller('UserController', function() {
     //     console.log(users);
@@ -50,97 +53,67 @@
     //   document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
     // }
 
-    ons.bootstrap()
-        .controller('Menu', function() {
-            this.load = function(page) {
-                mySplitter.content.load(page)
-                    .then(function() {
-                        mySplitter.left.close();
-                    });
-            };
-        });
-  </script>
+    </script>
 </head>
+
 <body>
-
-<ons-splitter var="mySplitter" ng-controller="Menu as splitter">
-    <ons-splitter-side side="left" width="220px" collapse swipeable>
+    <ng-include src="'html/partials/menu.html'"></ng-include>
+    <template id="homepage">
         <ons-page>
-            <ons-list>
-                <ons-list-item ng-click="splitter.load('homepage')" tappable>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button ng-click="mySplitter.left.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
                     Home
-                </ons-list-item>
-                <ons-list-item ng-click="splitter.load('listuser.html')" tappable>
-                    List User
-                </ons-list-item>
-                <ons-list-item ng-click="splitter.load('brands.html')" tappable>
-                    List Brands
-                </ons-list-item>
-                <ons-list-item ng-click="splitter.load('one.html')" tappable>
-                    List Devices
-                </ons-list-item>
-            </ons-list>
+                </div>
+            </ons-toolbar>
+            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                Swipe right to open the menu!
+            </p>
         </ons-page>
-    </ons-splitter-side>
-    <ons-splitter-content page="homepage"></ons-splitter-content>
-</ons-splitter>
+    </template>
 
-<template id="homepage">
-    <ons-page>
-        <ons-toolbar>
-            <div class="left">
-                <ons-toolbar-button ng-click="mySplitter.left.open()">
-                    <ons-icon icon="md-menu"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <div class="center">
-                Home
-            </div>
-        </ons-toolbar>
-        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-            Swipe right to open the menu!
-        </p>
-    </ons-page>
-</template>
+    <template id="listuser.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button ng-click="mySplitter.left.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    {{toolbarTitle}}
+                </div>
+            </ons-toolbar>
+            <p style="text-align: center; opacity: 1; padding-top: 20px;">
+                <ng-include src="'html/users/listuser.html'"></ng-include>
+            </p>
+        </ons-page>
+    </template>
 
-<template id="listuser.html">
-    <ons-page>
-        <ons-toolbar>
-            <div class="left">
-                <ons-toolbar-button ng-click="mySplitter.left.open()">
-                    <ons-icon icon="md-menu"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <div class="center">
-                {{toolbarTitle}}
-            </div>
-        </ons-toolbar>
-        <p style="text-align: center; opacity: 1; padding-top: 20px;">
-            <ng-include src="'html/users/listuser.html'"></ng-include>
-        </p>
-    </ons-page>
-</template>
+    <template id="brands.html">
+        <ons-page>
+            <ng-include src="'html/brands/list.html'"></ng-include>
+        </ons-page>
+    </template>
 
-<template id="brands.html">
-    <ons-page>
-        <ng-include src="'html/brands/list.html'"></ng-include>
-    </ons-page>
-</template>
-
-<template id="one.html">
-    <ons-page>
-        <ons-toolbar>
-            <div class="left">
-                <ons-toolbar-button ng-click="mySplitter.left.open()">
-                    <ons-icon icon="md-menu"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <div class="center">
-                One
-            </div>
-        </ons-toolbar>
-        <ng-include src="'html/users/one.html'"></ng-include>
-    </ons-page>
-</template>
+    <template id="one.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button ng-click="mySplitter.left.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    One
+                </div>
+            </ons-toolbar>
+            <ng-include src="'html/users/one.html'"></ng-include>
+        </ons-page>
+    </template>    
 </body>
 </html>
