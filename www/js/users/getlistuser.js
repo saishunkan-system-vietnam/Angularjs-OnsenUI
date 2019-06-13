@@ -1,7 +1,25 @@
 myApp
 .controller("UserController", function ($scope, $http) {
     $scope.toolbarTitle = 'List Users';
-
+    $scope.test = function(){
+        $ngConfirm({
+            title: 'Delete user?',
+            content: 'This dialog will automatically trigger \'cancel\' in 6 seconds if you don\'t respond.',
+            autoClose: 'cancel|8000',
+            buttons: {
+                deleteUser: {
+                    text: 'delete user',
+                    btnClass: 'btn-red',
+                    action: function () {
+                        $ngConfirm('Deleted the user!');
+                    }
+                },
+                cancel: function () {
+                    $ngConfirm('action is canceled');
+                }
+            }
+        });
+    };
     return $http({
         url: 'http://localhost/api/v1/user',
         method: 'GET',
