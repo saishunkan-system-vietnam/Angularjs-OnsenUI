@@ -1,0 +1,22 @@
+<template id="brandAdd.html">
+    <ons-page ng-controller="BrandAddController as brandAdd">
+        <ons-toolbar>
+            <div class="left">
+                <ons-back-button></ons-back-button>
+            </div>
+            <div class="center">Brand Add New</div>
+            <div class="right">
+                <ons-icon ng-click="onSave()" style="color: blue;padding-right: 10px;" icon="fa-check"></ons-icon>
+            </div>
+        </ons-toolbar>
+        <ons-list-item modifier="nodivider">
+            <ons-if platform="ios other" class="left left-label">
+                Name:
+            </ons-if>
+            <div class="center">
+                <ons-input id="title-input" type="text" placeholder="Eter brand name..." ng-model="name" float>
+                </ons-input>
+            </div>
+        </ons-list-item>
+    </ons-page>
+</template>

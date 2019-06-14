@@ -1,76 +1,41 @@
-<!-- <ons-toolbar>
-    <div class="left">
-        <ons-toolbar-button ng-click="mySplitter.left.open()">
-            <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-    </div>
-    <div class="center">
-        List Brands
-    </div>
-</ons-toolbar>
-<div style="text-align: center; opacity: 1; padding-top: 40px;" ng-controller="BrandsController">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="brand in brands">
-                <td>{{brand.id}}</td>
-                <td>{{brand.brand_name}}</td>
-                <td>
-                    <ons-icon ng-click="myFunction()" style="color: green" icon="fa-eye"></ons-icon><br />
-                    <ons-icon style="color: blue" icon="fa-edit"></ons-icon><br />
-                    <ons-icon style="color: red" icon="fa-trash"></ons-icon>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-<ons-navigator swipeable var="myNavigator" page="page1.html"></ons-navigator>
-
-<template id="page1.html">
-    <ons-page>
-        <ons-toolbar>
-            <div class="center">Page 1</div>
-        </ons-toolbar>
-
-        <p>This is the first page.</p>
-
-        <ons-button ng-click="myNavigator.pushPage('page2.html', {data: {title: 'Page 2'}})">Push page</ons-button>
-    </ons-page>
-</template>
-
-<template id="page2.html">
-    <ons-page ng-controller="Page2Controller as page2" ons-init="page2.init($event)">
+<ons-navigator swipeable var="myNavigator" page="brandList.html"></ons-navigator>
+<template id="brandList.html">
+    <ons-page ng-controller="BrandsController">
         <ons-toolbar>
             <div class="left">
-                <ons-back-button>Page 1</ons-back-button>
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
             </div>
-            <div class="center">{{ myNavigator.data.title }}</div>
+            <div class="center">
+                List Brands
+            </div>
+            <div class="right">
+                <ons-icon style="color: blue;margin-right: 10px;font-size: 20px" icon="fa-plus-circle" ng-click="myNavigator.pushPage('brandAdd.html')"></ons-icon>
+            </div>
         </ons-toolbar>
+        <div style="text-align: center; opacity: 1">
+            <table id="myTable" class="table table-hover" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-        <p>This is the second page.</p>
-        {{ myNavigator.data.title }}
+                    <tr ng-repeat="brand in brands">                        
+                        <td ng-click="myNavigator.pushPage('brandEdit.html', {data: {id: brand.id}})">{{brand.id}}</td>
+                        <td ng-click="myNavigator.pushPage('brandEdit.html', {data: {id: brand.id}})">{{brand.brand_name}}</td>
+                        <td>
+                            <ons-icon ng-click="onDelete(brand.id)" id={{brand.id}} style="color: red" icon="fa-trash"></ons-icon>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </ons-page>
 </template>
-
-<script>
-    myApp
-        .controller('Page2Controller', function ($scope) {
-            console.log('controller', $scope.myNavigator.data.title);
-
-            this.init = function (e) {
-                // Ensure the emitter is the current page, not a nested one
-                if (e.target === e.currentTarget) {
-                    var page = e.target;
-                    // Safely access data
-                    console.log('init event', page.data);
-                }
-            };
-        });
-</script>
+<ng-include src="'html/brands/edit.html'"></ng-include>
+<ng-include src="'html/brands/add.html'"></ng-include>
